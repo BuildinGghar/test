@@ -1,0 +1,394 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+{% block title %}Product Details{% endblock title %}
+{% block main-content %}
+<br/><br/><br/><br/>
+</style>
+<div class="container">
+   {% comment %} ------------------------------------------------------------------------------------------ {% endcomment %}
+   <div class="row flex justify-content-between">
+      <!-- Image Section -->
+      <style>
+         .img-container {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
+         }
+         .img-box {
+         max-width: 20%;
+         height: auto;
+         margin: 0;
+         cursor: pointer;
+         }
+         .img-box img {
+         width: 100%;
+         height: auto;
+         }
+         .large-img-box {
+         max-width: 100%;
+         height: auto;
+         display: none;
+         }
+         .large-img-box.show {
+         display: block;
+         }
+         .container1
+         {
+         border: 2px solid red;
+         width: 100px;
+         height: 100px;
+         }
+         .img1
+         {
+         width: 100px;
+         height: 100px;
+         }
+      </style>
+      <div class="img2 col-lg-5 mt-5">
+         <style>
+            header {
+            margin-bottom: 20px;
+            }
+            .product-container {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            gap: 40px;
+            }
+            /* .img-card{
+            width: 40%;
+            } */
+            .img-card img {
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 4px;
+            height: 520px;
+            object-fit: cover;
+            }
+            .small-Card {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin-top: 15px;
+            gap: 12px;
+            }
+            .small-Card img {
+            width: 104px;
+            height: 104px;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+            .small-Card img:active {
+            border: 1px solid #17696a;
+            }
+            .sm-card {
+            border: 2px solid darkred;
+            }
+            .product-info{
+            width: 60%;
+            }
+            .product-info h3 {
+            font-size: 32px;
+            font-family: Lato;
+            font-weight: 600;
+            line-height: 130%;
+            }
+            .product-info h5 {
+            font-size: 24px;
+            font-family: Lato;
+            font-weight: 500;
+            line-height: 130%;
+            color: #ff4242;
+            margin: 6px 0;
+            }
+            .product-info del {
+            color: #a9a9a9;
+            }
+            .product-info p {
+            color: #424551;
+            margin: 15px 0;
+            width: 70%;
+            }
+            .sizes p {
+            font-size: 22px;
+            color: black;
+            }
+            .size-option {
+            width: 200px;
+            height: 30px;
+            margin-bottom: 15px;
+            padding: 5px;
+            }
+            .quantity input {
+            width: 51px;
+            height: 33px;
+            margin-bottom: 15px;
+            padding: 6px;
+            }
+            button {
+            background: #17696a;
+            border-radius: 4px;
+            padding: 10px 37px;
+            border: none;
+            color: white;
+            font-weight: 600;
+            }
+            button:hover {
+            background: #ff4242;
+            transition: ease-in 0.4s;
+            }
+            .delivery {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+            color: #787a80;
+            font-size: 12px;
+            font-family: Lato;
+            line-height: 150%;
+            letter-spacing: 1px;
+            }
+            hr {
+            color: #787a80;
+            width: 58%;
+            opacity: 0.67;
+            }
+            .pagination {
+            color: #787a80;
+            margin: 15px 0;
+            cursor: pointer;
+            }
+            @media screen and (max-width: 576px) {
+            .product-container {
+            flex-direction: column;
+            }
+            .img-card img {
+            height: auto;
+            }
+            .small-Card img {
+            width: 80px;
+            height: 80px;
+            }
+            .product-info {
+            width: 100%;
+            }
+            .product-info p {
+            width: 100%;
+            }
+            .delivery {
+            width: 100%;
+            }
+            hr {
+            width: 100%;
+            }
+            }
+         </style>
+         <!-- product section -->
+         <section class="product-container">
+            <!-- left side -->
+            <div class="img-card">
+               <img src="{{ product.image.url }}" alt="" id="featured-image">
+               <!-- small img -->
+               <div class="small-Card">
+                  {% for i in product_images %}
+                  <img src="{{ i.image.url }}" alt="" class="small-Img">
+                  {% endfor %}
+               </div>
+            </div>
+            <!-- Right side -->
+         </section>
+         <script>
+            let featuedImg = document.getElementById('featured-image');
+            let smallImgs = document.getElementsByClassName('small-Img');
+            
+            smallImgs[0].addEventListener('click', () => {
+            featuedImg.src = smallImgs[0].src;
+            smallImgs[0].classList.add('sm-card')
+            smallImgs[1].classList.remove('sm-card')
+            smallImgs[2].classList.remove('sm-card')
+            smallImgs[3].classList.remove('sm-card')
+            smallImgs[4].classList.remove('sm-card')
+            })
+            smallImgs[1].addEventListener('click', () => {
+            featuedImg.src = smallImgs[1].src;
+            smallImgs[0].classList.remove('sm-card')
+            smallImgs[1].classList.add('sm-card')
+            smallImgs[2].classList.remove('sm-card')
+            smallImgs[3].classList.remove('sm-card')
+            smallImgs[4].classList.remove('sm-card')
+            })
+            smallImgs[2].addEventListener('click', () => {
+            featuedImg.src = smallImgs[2].src;
+            smallImgs[0].classList.remove('sm-card')
+            smallImgs[1].classList.remove('sm-card')
+            smallImgs[2].classList.add('sm-card')
+            smallImgs[3].classList.remove('sm-card')
+            smallImgs[4].classList.remove('sm-card')
+            })
+            smallImgs[3].addEventListener('click', () => {
+            featuedImg.src = smallImgs[3].src;
+            smallImgs[0].classList.remove('sm-card')
+            smallImgs[1].classList.remove('sm-card')
+            smallImgs[2].classList.remove('sm-card')
+            smallImgs[3].classList.add('sm-card')
+            smallImgs[4].classList.remove('sm-card')
+            })
+            smallImgs[4].addEventListener('click', () => {
+            featuedImg.src = smallImgs[4].src;
+            smallImgs[0].classList.remove('sm-card')
+            smallImgs[1].classList.remove('sm-card')
+            smallImgs[2].classList.remove('sm-card')
+            smallImgs[3].classList.remove('sm-card')
+            smallImgs[4].classList.add('sm-card')
+            })
+            
+            
+         </script>
+      </div>
+      <!-- ... Your HTML code ... -->
+      <!-- ... Your HTML code ... -->
+      <script>
+         const imgBoxes = document.querySelectorAll('.img-box');
+         const largeImgBox = document.getElementById('largeImgBox');
+         
+         imgBoxes.forEach(imgBox => {
+           imgBox.addEventListener('click', () => {
+             const imgSrc = imgBox.querySelector('img').src;
+         
+             const newImg = document.createElement('img');
+             newImg.src = imgSrc;
+             newImg.className = 'image col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center img-fluid';
+         
+             // Remove existing child elements from largeImgBox
+             while (largeImgBox.firstChild) {
+               largeImgBox.removeChild(largeImgBox.firstChild);
+             }
+         
+             // Add the new image element to largeImgBox
+             largeImgBox.appendChild(newImg);
+         
+             largeImgBox.classList.add('show');
+           });
+         });
+         
+         largeImgBox.addEventListener('click', () => {
+           largeImgBox.classList.remove('show');
+         });
+      </script>
+      {% comment %} ------------------------------------------------------------------------------------------ {% endcomment %}
+      <!-- Content Section -->
+      <div class="productdetail col-lg-5">
+        <h1 style="font-family: Georgia; font-size: 50px;">{{product.name}}</h1>
+        <h5 style="color: green;">Rs.{{product.after_discount}}/-</h5>
+        <small class="text-decoration-line-through text-muted fs-5"><del>{{ product.price }}/-</del></small>
+        <h5 style="color: blue;">{{product.weight}}</h5>
+        {% if product.product_availability %}
+        <h5 style="color: green;">Available</h5>
+        <br><br>
+        <h4>Product Features</h4>
+        <ul>
+           <li>{{product.long_dec}}</li>
+        </ul>
+        <div class="row justify-content-center">
+           <!-- Add to Cart Button -->
+           <div class="col-sm-6 col-md-4">
+              {% if is_product_in_cart %}
+              <a href="/cart" class="btn btn-success shadow px-4 py-2">Show Cart</a>
+              {% else %}
+              <form action="/add-to-cart" class="d-flex justify-content-center justify-content-sm-start mb-2">
+                 <input type="hidden" name="prod_id" value="{{ product.id }}" />
+                 <button type="submit" class="btn btn-primary shadow px-4 py-2">Add to Cart</button>
+              </form>
+              {% endif %}
+           </div>
+           <!-- Buy Now Button -->
+           <div class="col-sm-6 col-md-4">
+              <form action="/add-to-cart" class="d-flex justify-content-center justify-content-sm-start mb-2">
+                 <input type="hidden" name="prod_id" value="{{ product.id }}" />
+                 <button type="submit" class="btn btn-warning shadow px-4 py-2">Buy Now</button>
+              </form>
+           </div>
+           <!-- Wishlist Button -->
+           {% comment %} <div class="col-12 mt-2 text-center">
+              {% if wishlist %}
+              <a pid="{{ product.id }}" class="minus-wishlist btn btn-danger shadow px-4 py-2"><i class="fas fa-heart fa-lg"></i></a>
+              {% else %}
+              <a pid="{{ product.id }}" class="plus-wishlist btn btn-success shadow px-4 py-2"><i class="fas fa-heart fa-lg"></i></a>
+              {% endif %}
+           </div> {% endcomment %}
+        </div>
+        {% else %}
+        <h5 style="color: red;"> Not Available</h5>
+        {% endif %}
+     </div>
+     
+<!-- Add the necessary link and script tags -->
+<br><br><br>
+<div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+   <div class="carousel-inner">
+      <div class="carousel-item active">
+         <div class="row justify-content-center">
+            {% for product in products %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+               <a href="{% url 'product-detail' id=product.id %}" class="btn">
+                  <div class="card mb-4">
+                     <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                     <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <h5 class="card-title">{{ product.weight }}</h5>
+                        <p style="color: green;">Rs.{{ product.after_discount }}/-</p>
+                        <p class="text-decoration-line-through text-muted"><del>Rs.{{ product.price }}/-</del></p>
+                     </div>
+                  </div>
+               </a>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   <!-- Add carousel controls -->
+   {% comment %} <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   <span class="visually-hidden">Previous</span>
+   </button>
+   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+   <span class="visually-hidden">Next</span>
+   </button> {% endcomment %}
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   $('.plus-wishlist').click(function() {
+       var id = $(this).attr("pid").toString();
+       $.ajax({
+           type: "GET",
+           url: "/pluswishlist",
+           data: {
+               prod_id: id
+           },
+           success: function(data) {
+               // Correctly build the URL with the 'id' parameter
+               window.location.href = `http://127.0.0.1:8000/product-detail/${id}/`;
+           }
+       });
+   });
+   
+   
+   $('.minus-wishlist').click(function(){
+       var id = $(this).attr("pid").toString();
+       $.ajax({
+           type: "GET",
+           url: "/minuswishlist/",
+           data: {
+               prod_id: id
+           },
+           success: function(data) {
+               // You can choose to handle the success message or redirect here
+               alert(data.message);
+               // Redirect to the product detail page after successful removal
+               window.location.href = `http://127.0.0.1:8000/product-detail/${id}/`;
+           }
+       });
+   });
+</script>
+{% endblock main-content %}

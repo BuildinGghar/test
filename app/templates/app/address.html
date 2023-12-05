@@ -1,0 +1,54 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}Address {% endblock title %}
+
+
+
+{% block main-content %}
+
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome <span class="text-capitalize">{{request.user}}</span></h3>
+    
+    <div class="col-sm-2 border-end">
+        <ul class="list-unstyled">
+            <li class="d-grid"> <a href="/profile" class="btn ">Profile</a></li>
+            <li class="d-grid"> <a href="/address" class="btn btn-primary">Address</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-8 offset-sm-1">
+        <div class="row">
+            {% for i in addresses %}
+            <dir class="col-sm-6">
+                <div class="card m-2">
+                    <div class="card-body">
+                        <h3>Address {{forloop.counter}}</h3>
+                        <p>Name: {{i.name}}</p>
+                        <p>Locality: {{i.locality}}</p>
+                        <p>City: {{i.city}}</p>
+                        <p>Mobile: {{i.mobile}}</p>
+                        <p>Zipcode: {{i.zipcode}}</p>
+                        <p>State: {{i.state}}</p>
+                        <div class="text-center">
+                            <a href="{% url 'update_address' pk=i.id %}" class="btn btn-success float-left">Update</a>
+                            <a href="{% url 'delete_address' pk=i.id %}" class="btn btn-danger float-right">Delete</a>
+                           
+                          </div>
+                          
+                    </div>
+                </div>
+            </dir>
+            {% endfor %}
+            <a href="/profile" class="btn btn-primary float-right">Add More</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<br/><br/><br/><br/>
+
+{% endblock main-content %}
+
+

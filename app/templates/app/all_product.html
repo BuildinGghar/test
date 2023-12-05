@@ -1,0 +1,223 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+{% block title %}Index{% endblock title %}
+
+
+{% block main-content %}
+<div class="container">
+   <br/><br/><br/><br/>
+   <h2 class="text-center"> All Products</h2>
+   <br/><br/><br/><br/>
+   
+
+ 
+
+
+ 
+
+
+<div class="container">
+    <div class="container">
+        <!-- Add the sorting and price range filter form -->
+        <form id="filter-form" method="get" class="filter-form">
+            <div class="filter-group">
+              <label for="sort">Sort by:</label>
+              <select id="sort" name="sort" class="filter-select">
+                <option value="all_item">All</option>
+                <option value="price_low_to_high">Price: Low to High</option>
+                <option value="price_high_to_low">Price: High to Low</option>
+              </select>
+            </div>
+            {% comment %} <div class="filter-group">
+              <label for="price_range">Price Range:</label>
+              <select id="price_range" name="price_range" class="filter-select">
+                <option value="1_100000">All</option>
+                <option value="1_100">1 - 100</option>
+                <option value="100_250">100 - 250</option>
+                <option value="250_500">250 - 500</option>
+                <option value="500_1000">500 - 1000</option>
+                <option value="1000_2000">1000 - 2000</option>
+                <option value="2000_5000">2000 - 5000</option>
+                <option value="5000_10000">5000 - 10000</option>
+              </select>
+            </div> {% endcomment %}
+            <div class="filter-group">
+              <label for="city">City:</label>
+              <select id="city" name="city" class="filter-select">
+                <option value="">All Cities</option>
+                {% for city_obj in city %}
+                  <option value="{{ city_obj.city }}">{{ city_obj.city }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class="filter-button">Apply Filters</button>
+          </form>
+          
+        <br><br><br>
+        
+
+
+
+
+  <style>
+  /* Add custom styles here to enhance the design */
+  .product-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+  }
+
+  .product-title {
+      font-size: 1.2rem;
+      margin-top: 10px;
+  }
+
+  .product-price {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-top: 10px;
+  }
+  a{
+   text-decoration: none;
+  }
+</style>
+<div class="container mt-4">
+  <div class="row">
+    {% for product_obj in product %}
+          <div class="col-md-3">
+              <div class="product-card">
+                  <a href="{% url 'product-detail' id=product_obj.id %}">
+                      <div class="product-image">
+                          <img src="{{ product_obj.image.url }}" alt="Product Image">
+                      </div>
+                      <div class="product-details">
+                          <h2 class="product-title">{{ product_obj.name }}</h2>
+                          <h2 class="product-title">{{ product_obj.weight }}</h2>
+                          <div class="product-price">
+                              <span class="text-danger">Rs.{{ product_obj.after_discount }}/-
+                                  <small class="text-decoration-line-through">{{ product_obj.price }}</small>
+                              </span>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+  {% comment %} <style>
+    .pagination {
+        text-align: center;
+        margin-top: 20px; /* Adjust margin as needed */
+    }
+
+    .step-links a {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 0 4px;
+        background-color: #4CAF50; /* Green background color */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .step-links .current {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #333;
+        color: white;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if product.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ product.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ product.number }} of {{ product.paginator.num_pages }}.
+        </span>
+
+        {% if product.has_next %}
+            <a href="?page={{ product.next_page_number }}">next</a>
+            <a href="?page={{ product.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div> {% endcomment %}
+
+<style>
+  .pagination-container {
+      text-align: center;
+      margin-top: 20px; /* Adjust margin as needed */
+  }
+
+  .step-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px; /* Adjust margin as needed */
+  }
+
+  .step-links a {
+      display: inline-block;
+      padding: 8px 12px;
+      margin: 0 4px;
+      background-color: #4CAF50; /* Green background color */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+  }
+
+  .step-links .current {
+      display: inline-block;
+      padding: 8px 12px;
+      background-color: #333;
+      color: white;
+      border-radius: 5px;
+  }
+
+  @media only screen and (max-width: 600px) {
+      /* Adjust styles for smaller screens */
+      .step-links {
+          flex-direction: column;
+          align-items: center;
+      }
+  }
+</style>
+
+<div class="pagination-container">
+  <span class="step-links">
+      {% if product.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ product.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ product.number }} of {{ product.paginator.num_pages }}.
+      </span>
+
+      {% if product.has_next %}
+          <a href="?page={{ product.next_page_number }}">next</a>
+          <a href="?page={{ product.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+
+
+</div>
+
+
+
+
+  <br/><br/><br/><br/>
+{% endblock main-content %}

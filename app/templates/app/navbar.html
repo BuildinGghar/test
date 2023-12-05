@@ -1,0 +1,92 @@
+
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-menu fixed-top">
+   <div class="container-fluid">
+      <style>
+         .logo-img {
+            width: 50%; /* Adjust the width as needed */
+            height: auto; /* Maintain the aspect ratio */
+        }
+        
+        /* Optional: Adjust the size for smaller screens */
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 80%; /* Adjust the width for smaller screens */
+            }
+        }
+      </style>
+       <a href="/" class="navbar-brand">
+           <img src="{% static 'app/images/logo.png' %}" class="logo-img" alt="Logo">
+       </a>
+       <button class="navbar-toggler bg-black" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+               {% comment %} <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li> {% endcomment %}
+               <li class="nav-item"><a class="nav-link text-black" href="/all_product">Products</a></li>
+               <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">City</a>
+                   <ul class="dropdown-menu">
+                       {% for city_obj in city %}
+                           <li><a class="dropdown-item" href="{% url 'product' city_name=city_obj.city %}">{{ city_obj.city }}</a></li>
+                       {% endfor %}
+                   </ul>
+               </li>
+               <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kitchen</a>
+                   <ul class="dropdown-menu">
+                       {% for category_obj in category_objects %}
+                           <li><a class="dropdown-item" href="{% url 'all_category_filter' category_id=category_obj.id %}">{{ category_obj.name }}</a></li>
+                       {% endfor %}
+                   </ul>
+               </li>
+               {% comment %} <li class="nav-item"><a class="nav-link text-white" href="/about">About</a></li>
+               <li class="nav-item"><a class="nav-link text-white" href="/contact">Contact</a></li> {% endcomment %}
+               
+               <a class="nav-link text-black" href="tel:+918035564342">helpline +91 8035564342</a>&nbsp;&nbsp;
+               <form class="d-flex" role="search" method="GET" action="{% url 'search_results' %}">
+                <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-danger" type="submit">Search</button>
+            </form>
+           </ul>
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown mx-2">
+                <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if request.user.is_authenticated %}
+                        {{ request.user.username }}
+                    {% else %}
+                    <button type="button" class="btn btn-success btn-lg">Login</button>
+                    {% endif %}
+                    
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                    <li><a class="dropdown-item" href="/orderscod">Orders</a></li>
+                    {% if not request.user.is_authenticated %}
+                        <li><a class="dropdown-item" href="/accounts/login/">Login</a></li>
+                        <li><a class="dropdown-item" href="/customer_registration">Registration</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="/password-change">Change Password</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown mx-2">
+                <a href="/cart" class="nav-link text-black">
+                  <span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {% endif %}</span>
+                  <button type="button" class="btn btn-warning btn-lg">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                  </button>
+                </a>
+              </li>
+              
+        </ul>
+           {% comment %} <a class="nav-link text-white" href="tel:+918035564342">helpline +91 8035564342</a>&nbsp;&nbsp; {% endcomment %}
+           {% comment %} <form class="d-flex" role="search" method="GET" action="{% url 'search_results' %}">
+               <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+               <button class="btn btn-danger" type="submit">Search</button>
+           </form> {% endcomment %}
+       </div>
+       
+   </div>
+</nav>

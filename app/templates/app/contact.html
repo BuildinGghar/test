@@ -1,0 +1,211 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}Contact Us{% endblock title %}
+
+
+
+
+
+
+{% block main-content %}
+
+{% comment %} <div class="container mt-3">
+    <br>
+    <h2 class="text-center">Contact Us</h2>
+    <br>
+    <div class="row container">
+        <p class="fs-4 text-center"> Address : Head Office.# 456, 4th Floor, 7th Cross, BTM Layout Stage 2. Bengaluru - 560076 Landmark Opposite Marigold Hospital</p>
+        <p class="fs-4 text-center"> Contact : itbuildingghar@gmail.com</p>
+        <p class="fs-4 text-center"> Mobile : 7766889922</p>
+    </div>
+</div> {% endcomment %}
+
+
+<style>
+  
+h1 {
+  font-family: 'Poppins', sans-serif, 'arial';
+  font-weight: 600;
+  font-size: 72px;
+  color: white;
+  text-align: center;
+}
+
+h4 {
+  font-family: 'Roboto', sans-serif, 'arial';
+  font-weight: 400;
+  font-size: 20px;
+  color: #9b9b9b;
+  line-height: 1.5;
+}
+
+/* ///// inputs /////*/
+
+input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
+  font-size: 0.75em;
+  color: #999;
+  top: -5px;
+  -webkit-transition: all 0.225s ease;
+  transition: all 0.225s ease;
+}
+
+.styled-input {
+  float: left;
+  width: 293px;
+  margin: 1rem 0;
+  position: relative;
+  border-radius: 4px;
+}
+
+@media only screen and (max-width: 768px){
+  .styled-input {
+      width:100%;
+  }
+}
+
+.styled-input label {
+  color: #999;
+  padding: 1.3rem 30px 1rem 30px;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.styled-input.wide { 
+  width: 650px;
+  max-width: 100%;
+}
+
+input,
+textarea {
+  padding: 30px;
+  border: 0;
+  width: 100%;
+  font-size: 1rem;
+  background-color: #2d2d2d;
+  color: white;
+  border-radius: 4px;
+}
+
+input:focus,
+textarea:focus { outline: 0; }
+
+input:focus ~ span,
+textarea:focus ~ span {
+  width: 100%;
+  -webkit-transition: all 0.075s ease;
+  transition: all 0.075s ease;
+}
+
+textarea {
+  width: 100%;
+  min-height: 15em;
+}
+
+.input-container {
+  width: 650px;
+  max-width: 100%;
+  margin: 20px auto 25px auto;
+}
+
+.submit-btn {
+  float: right;
+  padding: 7px 35px;
+  border-radius: 60px;
+  display: inline-block;
+  background-color: #4b8cfb;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
+            0 2px 10px 0 rgba(0,0,0,0.07);
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(1px);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+            0 1px 1px 0 rgba(0,0,0,0.09);
+}
+
+@media (max-width: 768px) {
+  .submit-btn {
+      width:100%;
+      float: none;
+      text-align:center;
+  }
+}
+
+input[type=checkbox] + label {
+color: #ccc;
+font-style: italic;
+} 
+
+input[type=checkbox]:checked + label {
+color: #f00;
+font-style: normal;
+}
+
+</style>
+<br><br><br>
+<div class="container">
+	<div class="row">
+			<h1>contact us</h1>
+	</div>
+	<div class="row">
+			<h4 style="text-align:center">We'd love to hear from you!</h4>
+      <h3 style="text-align:center">Call to Order +91 8035564342</h3>
+      <h3 style="text-align:center">Support +91 9343899923</h3>
+      <h3 style="text-align:center">contact@farmscraft.com</h3>
+      <h3 style="text-align:center"># 456, 4th Floor, 7th Cross, BTM Layout Stage 2. <br>Bengaluru - 560076 Landmark Opposite Marigold Hospital</h3>
+      
+	</div>
+	<form method="post">
+    {% csrf_token %}
+    <div class="row input-container">
+        <div class="col-xs-12">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="col-md-6 col-sm-12">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div class="col-md-6 col-sm-12">
+            {{ form.phone_number.label_tag }}
+            {{ form.phone_number }}
+        </div>
+        <div class="col-xs-12">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+        </div>
+        <div class="col-xs-12">
+            <button type="submit" class="btn-lrg submit-btn">Send Message</button>
+        </div>
+    </div>
+</form>
+
+</div>
+
+
+
+<br/><br/><br/><br/>
+{% endblock main-content %}
+
+
+{% comment %} 
+new bg.in dns
+khalid.ns.cloudflare.com
+
+lia.ns.cloudflare.com {% endcomment %}
+
+
+{% comment %} 
+old bg.com  dns
+ns1.dns-parking.com
+ns2.dns-parking.com {% endcomment %}

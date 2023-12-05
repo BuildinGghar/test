@@ -1,0 +1,99 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+{% block title %}Index{% endblock title %}
+
+
+{% block main-content %}
+<div class="container">
+   <br/><br/><br/><br/>
+   <h2 class="text-center">{{ desired_category.name }}</h2>
+
+   <br/><br/><br/><br/>
+  
+
+
+
+
+
+
+
+<div class="container">
+    <div class="container">
+        <!-- Add the sorting and price range filter form -->
+        <form id="filter-form" method="get" class="filter-form">
+            <div class="filter-group">
+                <label for="sort">Sort by:</label>
+                <select id="sort" name="sort" class="filter-select">
+                    <option value="all_item">All</option>
+                    <option value="price_low_to_high">Price: Low to High</option>
+                    <option value="price_high_to_low">Price: High to Low</option>
+                </select>
+            </div>
+            <button type="submit" class="filter-button">Apply Filters</button>
+        </form>
+        
+          
+        <br><br><br>
+        <style>
+          /* Add custom styles here to enhance the design */
+          .product-card {
+              border: 1px solid #ccc;
+              border-radius: 10px;
+              padding: 10px;
+              margin-bottom: 20px;
+              text-align: center;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+          }
+        
+          .product-image img {
+              max-width: 100%;
+              height: auto;
+              border-radius: 10px;
+          }
+        
+          .product-title {
+              font-size: 1.2rem;
+              margin-top: 10px;
+          }
+        
+          .product-price {
+              font-size: 1.25rem;
+              font-weight: bold;
+              margin-top: 10px;
+          }
+          a{
+           text-decoration: none;
+          }
+        </style>
+        <div class="container mt-4">
+          <div class="row">
+            {% for product_obj in product %}
+                  <div class="col-md-3">
+                      <div class="product-card">
+                          <a href="{% url 'product-detail' id=product_obj.id %}">
+                              <div class="product-image">
+                                  <img src="{{ product_obj.image.url }}" alt="Product Image">
+                              </div>
+                              <div class="product-details">
+                                  <h2 class="product-title">{{ product_obj.name }}</h2>
+                                  <h2 class="product-title">{{ product_obj.weight }}</h2>
+                                  <div class="product-price">
+                                      <span class="text-danger">Rs.{{ product_obj.after_discount }}/-
+                                          <small class="text-decoration-line-through">{{ product_obj.price }}</small>
+                                      </span>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+        </div>
+        
+        
+        
+        
+          <br/><br/><br/><br/>
+
+  <br/><br/><br/><br/>
+{% endblock main-content %}

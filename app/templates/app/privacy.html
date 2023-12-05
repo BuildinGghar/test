@@ -1,0 +1,83 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}T&C {% endblock title %}
+
+
+
+{% block main-content %}
+
+<br/><br/><br/><br/>
+
+<style>
+    .b {
+        background: linear-gradient(#ccc, #fff);
+        font: 14px sans-serif;
+        padding: 20px;
+      }
+      .letter {
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        margin: 26px auto 0;
+        max-width: 550px;
+        min-height: 300px;
+        padding: 24px;
+        position: relative;
+        width: 80%;
+      }
+      .letter:before, .letter:after {
+        content: "";
+        height: 98%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+      }
+      .letter:before {
+        background: #fafafa;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        left: -5px;
+        top: 4px;
+        transform: rotate(-2.5deg);
+      }
+      .letter:after {
+        background: #f6f6f6;
+        box-shadow: 0 0 3px rgba(0,0,0,0.2);
+        right: -3px;
+        top: 1px;
+        transform: rotate(1.4deg);
+      }
+</style>
+<div class="d">
+<div class="letter">
+    <h2>Privacy Policy</h2>
+
+    <p><strong>Introduction: </strong>FarmsCraft is dedicated to prioritizing, protecting, and safeguarding your privacy. We understand and value the importance of your private information. To ensure the same, this privacy policy outlines how we collect your data and how we use and subsequently protect it. It further outlines your rights regarding personal information.</p>
+
+    <p><strong>Personal Data We Collect:</strong> FarmsCraft is only limited to collecting personal data and information like your contact information (i.e., email ID, contact no.), address, and name when you make a purchase.</p>
+
+    <p><strong>Cookie Policy:</strong> FarmsCraft uses a strict cookie policy, as the company utilizes cookies to intensify the browsing experience of the users. Cookies are the small text pieces that are sent to your browser when you visit a website. Cookies are used by us to track your choices and subsequently analyze the website traffic, to formulate attractive content, based on your choices and preferences. However, we prioritize your consent to the same, wherein you can feasibly select, delete, and manage the cookies, by leveraging your browser settings.</p>
+
+    <p><strong>Retention & Deletion:</strong> FarmsCraft only retains your personal information for as long as it is required vis-a-vis the intention for which it was collected. FarmsCraft deletes all personal information once the purpose has been served.</p>
+
+    <p><strong>Your Rights to Your Data:</strong> By Section 43A of the Information Technology Act, you are eligible to demand optimal and reasonable security from FarmsCraft. To be precise, you possess the legal right to access, delete, and rectify any and every personal data of yours held by the company. You can contact us for the same through the contact information provided in the section hereunder.</p>
+
+    <p><strong>Third-Party Protection:</strong> FarmsCraft does not share or sell your information to any third party. We are very specific and grounded about our data sharing. In exceptional cases of data sharing with our third-party partners, we ensure to contractually bind them to prevent any unethical use of your data.</p>
+
+    <p><strong>Changes:</strong> FarmsCraft has the right and free will to change, delete, upgrade, and modify any and every information, including this privacy policy, at any point in time. Hence, we encourage our audience to frequently check the privacy policy to stay informed regarding the same, if deemed so by the user.</p>
+
+    <p><strong>Complaints:</strong> If you have any issues, concerns, and complaints regarding our privacy policy, then you can freely contact us through the contact information provided in the section hereunder. We will judiciously investigate the matter and respond as soon as possible. We promise to act according to the latest privacy laws, having jurisdiction over either of the parties.</p>
+
+    <h2>Contact Us</h2>
+    <address>
+        <strong>FarmsCraft</strong><br>
+        <strong>Address: </strong>#456, 4th Floor, 7th Cross, BTM Layout Stage 2. Bengaluru - 560076<br>
+        <strong>Landmark: </strong>Opposite Marigold Hospital<br>
+        <strong>Contact No:</strong> +91 9343899923<br>
+        <strong>Email: </strong><a href="mailto:contactus@farmscraft.com">contactus@farmscraft.com</a>
+    </address>
+  </div>
+</div>
+
+<br/><br/><br/><br/>
+
+{% endblock main-content %}

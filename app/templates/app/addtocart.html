@@ -1,0 +1,128 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}Cart {% endblock title %}
+
+{% block main-content %}
+
+<div class="container my-5">
+    <div class="row">
+        {% if cart %}
+            <h1 class="text-center mb-5">Shopping Cart</h1>
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Cart</h3>
+                        {% for item in cart %}
+                            <div class="row">
+                                <div class="col-sm-3 text-center align-self-center">
+                                    <img src="{{item.product.image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150">
+                                </div>
+                                <div class="col-sm-9">
+                                    <div>
+                                        <h5>{{item.product.name}}</h5>
+                                        <p class="mb-2 text-muted small">{{item.product.short_dec}}</p>
+                                        <div class="my-3">
+                                            <label for="quantity"> Quantity:</label>
+                                            <a class="minus-cart btn" pid= {{item.product.id}}> <i class="fas fa-minus-square fa-lg"></i></a>
+                                            <span id="quantity">{{item.quantity}}</span>
+                                            <a class="plus-cart btn" pid="{{item.product.id}}"> <i class="fas fa-plus-square fa-lg"></i></a>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#" class="remove-cart btn btn-sm btn-secondary mr-3" pid={{item.product.id}}>Remove</a>
+                                            <p class="mb-0"><span> <strong>Rs. {{item.product.after_discount}}</strong> </span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="text-muted">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4"> <!-- Changed from col-sm-1 to col-sm-4 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3>The Total Amount of</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amount <span id="amount"> Rs. {{amount}}</span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0"> Shopping <span>Rs. 0.00</span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 border-0 mb-3"> 
+                                <div>
+                                    <strong>Total</strong> <small>(including GST)</small>
+                                </div>
+                                <span id="totalamount"><strong>Rs. {{totalamount}}</strong></span>
+                            </li>
+                        </ul>
+                        <div class="d-grid"><a href="/checkout" class="btn btn-primary">Place Order</a></div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h1 class="text-center mb-5"> Cart is Empty </h1>
+        {% endif %}
+    </div>
+</div>
+
+<br/><br/><br/><br/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Plus button click event handler
+        $('.plus-cart').click(function() {
+            var id = $(this).attr("pid").toString();
+            var eml = this.parentNode.children[2];
+            $.ajax({
+                type: "GET",
+                url: "/pluscart",
+                data: {
+                    prod_id: id
+                },
+                success: function(data) {
+                    eml.innerText = data.quantity;
+                    document.getElementById("amount").innerText = data.amount;
+                    document.getElementById("totalamount").innerText = data.totalamount;
+                }
+            });
+        });
+
+        // Minus button click event handler
+        $('.minus-cart').click(function() {
+            var id = $(this).attr("pid").toString();
+            var eml = this.parentNode.children[2];
+            $.ajax({
+                type: "GET",
+                url: "/minuscart",
+                data: {
+                    prod_id: id
+                },
+                success: function(data) {
+                    eml.innerText = data.quantity;
+                    document.getElementById("amount").innerText = data.amount;
+                    document.getElementById("totalamount").innerText = data.totalamount;
+                }
+            });
+        });
+        $('.remove-cart').click(function() {
+            var id = $(this).attr("pid").toString();
+            var row = this.parentNode.parentNode;
+            $.ajax({
+                type: "GET",
+                url: "/removecart",
+                data: {
+                    prod_id: id
+                },
+                success: function(data) {
+                    // Remove the entire cart item row from the HTML
+                    $(row).remove();
+                    document.getElementById("amount").innerText = data.amount;
+                    document.getElementById("totalamount").innerText = data.totalamount;
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock main-content %}

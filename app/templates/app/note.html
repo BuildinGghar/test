@@ -1,0 +1,552 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+{% block title %}Index{% endblock title %}
+{% block bannner_slider %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+   <div class="carousel-inner">
+      <div class="carousel-item active">
+         <img src="{% static 'app/images/banner/b1.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item ">
+         <img src="{% static 'app/images/banner/b2.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item ">
+         <img src="{% static 'app/images/banner/b3.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item ">
+         <img src="{% static 'app/images/banner/b4.png' %}" class="d-block w-100" alt="...">
+      </div>
+   </div>
+</div>
+{% endblock bannner_slider %}
+{% block information %}
+<div class="container">
+   <div class="row bg-success text-center p-5 text-white border-bottom shadow">
+      <h1> Products </h1>
+      <small class="fs-5">
+      The code you provided seems to be a Django template code for displaying a shopping cart. However, it is missing the JavaScript code for the plus and minus buttons to update the cart quantity dynamically. Here's the updated code with the JavaScript code included:
+      The code you provided seems to be a Django template code for displaying a shopping cart. However, it is missing the JavaScript code for the plus and minus buttons to update the cart quantity dynamically. Here's the updated code with the JavaScript code included:
+      </small>
+   </div>
+</div>
+{% endblock information %}
+{% block main-content %}
+<div class="container">
+   <br/><br/><br/><br/>
+   <h2 class="text-center"> All Products</h2>
+   <br/><br/><br/><br/>
+   <style>
+      .product-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+      }
+   </style>
+
+   
+
+   <div class="container">
+   
+
+   <style>
+       .product-box {
+           border: 1px solid #ccc;
+           padding: 10px;
+           margin-bottom: 20px;
+       }
+       <style>
+   
+  
+  
+ 
+  
+           .container {
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+             align-items: center;
+             gap: 20px;
+             margin-top: 50px;
+           }
+           
+           .product-card {
+             width: 300px;
+             border-radius: 10px;
+             -webkit-box-shadow:  0px 0px 47px -20px rgba(0,0,0,1);
+             -moz-box-shadow:  0px 0px 47px -20px rgba(0,0,0,1);
+             box-shadow:  0px 0px 47px -20px rgba(0,0,0,1);
+             margin: 60px 0px 60px 0px;
+             background-color: #fff;
+           }
+           
+           .product-image {
+             height: 300px;
+             overflow: hidden;
+             position: relative;
+             top:-90px;
+             padding: 10px;
+           }
+           
+           .product-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             transition: transform 0.5s;
+             border-radius: 10px;
+           }
+           
+           .product-image:hover img {
+             transform: scale(1.1);
+           }
+           
+           .product-details {
+             padding: 20px;
+             margin-top:-90px;
+           }
+           
+           .product-title {
+             font-size: 1.5rem;
+             margin-bottom: 10px;
+           }
+           
+           .product-price {
+             font-size: 1.25rem;
+             font-weight: bold;
+             margin-bottom: 10px;
+           }
+           
+           .product-description {
+             font-size: 1rem;
+             line-height: 1.5;
+             margin-bottom: 10px;
+             color: #666;
+           }
+           
+           .product-details.expand {
+             height: auto;
+           }
+           
+           .product-details .expand-button {
+             cursor: pointer;
+             font-size: 1rem;
+             color: #666;
+             text-align: center;
+             margin-top: 10px;
+           }
+           
+           .product-details .expand-button:hover {
+             color: #000;
+             text-decoration: underline;
+           }
+           .buttons {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+           }
+           
+           .add-to-cart,
+           .compare {
+             padding: 10px 20px;
+             border: none;
+             border-radius: 20px;
+             color: #fff;
+             font-size: 1rem;
+             font-weight: bold;
+             cursor: pointer;
+           }
+           
+           .add-to-cart {
+             background-color: #666;
+           }
+           
+           .compare {
+             background-color: #CAC531;
+             color:#fff;
+           }
+           
+           .add-to-cart:hover,
+           .compare:hover {
+             opacity: 0.8;
+           }
+           
+           .credit a {
+             text-decoration: none;
+             color: #000;
+             font-weight: 800;
+           }
+           
+           .credit {
+               color: #000;
+             text-align: center;
+             margin-top: 10px;
+             font-family: Verdana,Geneva,Tahoma,sans-serif;
+           }
+           
+           
+               </style>
+               
+           
+               <div class="container">
+                  <div class="row">
+                    {% for product_obj in product|slice:"0:4" %}
+                      <div class="col-md-3">
+                        <div class="product-card">
+                          <a href="{% url 'product-detail' id=product_obj.id %}" class="btn">
+                            <div class="product-image">
+                              <img src="{{ product_obj.image.url }}" alt="Product Image">
+                            </div>
+                            <div class="product-details">
+                              <h2 class="product-title">{{ product_obj.name }}</h2>
+                              <div class="fw-bold text-danger">
+                                Rs.{{ product_obj.after_discount }}/-
+                                <small class="fw-light text-decoration-line-through">{{ product_obj.price }}</small>
+                              </div>
+                            </div>
+                          </a>
+                          <div class="row justify-content-center">
+                            <div class="col-sm-6 col-md-4">
+                              {% if totalitem > 0 and product_obj.id in cart_product_ids %}
+                                <form action="{% url 'remove-from-cart' %}" method="post">
+                                  {% csrf_token %}
+                                  <input type="hidden" name="prod_id" value="{{ product_obj.id }}" />
+                                  <button type="submit" class="btn btn-danger shadow px-4 py-2">Remove</button>
+                                </form>
+                              {% else %}
+                                <form action="/add-to-cart" class="d-flex justify-content-center justify-content-sm-start mb-2">
+                                  <input type="hidden" name="prod_id" value="{{ product_obj.id }}" />
+                                  <button type="submit" class="btn btn-primary shadow px-4 py-2">Add</button>
+                                </form>
+                              {% endif %}
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                              <form action="/add-to-cart" class="d-flex justify-content-center justify-content-sm-start mb-2">
+                                <input type="hidden" name="prod_id" value="{{ product_obj.id }}" />
+                                <button type="submit" class="btn btn-warning shadow px-4 py-2">Buy</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                  
+                  <div class="row justify-content-center mt-4">
+                    <div class="col-md-4">
+                      <button id="view-more-btn" class="btn btn-primary">View More</button>
+                    </div>
+                  </div>
+                </div>
+                
+                <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  const productContainer = document.querySelector(".row");
+                  const viewMoreBtn = document.getElementById("view-more-btn");
+                  let showingAllProducts = false;
+                  
+                  viewMoreBtn.addEventListener("click", function() {
+                    if (showingAllProducts) {
+                      productContainer.innerHTML = '';
+                      showingAllProducts = false;
+                      
+                      {% for product_obj in product|slice:"0:4" %}
+                        productContainer.innerHTML += `
+                          <div class="col-md-3">
+                            <!-- Your existing product card code here -->
+                          </div>
+                        `;
+                      {% endfor %}
+                      
+                      viewMoreBtn.textContent = "View More";
+                    } else {
+                      productContainer.innerHTML = '';
+                      showingAllProducts = true;
+                      
+                      {% for product_obj in product %}
+                        productContainer.innerHTML += `
+                          <div class="col-md-3">
+                            <!-- Your existing product card code here -->
+                          </div>
+                        `;
+                      {% endfor %}
+                      
+                      viewMoreBtn.textContent = "View Less";
+                    }
+                  });
+                });
+                </script>
+                
+               
+
+
+   <style>
+      .grid-image {
+      border-radius: 10px;
+      transition: 0.2s ease-in-out;
+      width: 100%;
+      height: 100%;
+      }
+      .grid-image:hover {
+      transform: scale(1.05);
+      transition: 0.2s ease-in-out;
+      }
+      .grid {
+      display: grid;
+      gap: 10px;
+      grid-template-areas:
+      "I1 I1 I2 I3"
+      "I1 I1 I2 I7"
+      "I4 I5 I6 I7";
+      }
+      .item1 {
+      grid-area: I1;
+      }
+      .item2 {
+      grid-area: I2;
+      }
+      .item3 {
+      grid-area: I3;
+      }
+      .item4 {
+      grid-area: I4;
+      }
+      .item5 {
+      grid-area: I5;
+      }
+      .item6 {
+      grid-area: I6;
+      }
+      .item7 {
+      grid-area: I7;
+      }
+   </style>
+   <div class="grid">
+      <div class="item1">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image1.png' %}"
+            alt="image 1"
+            />
+      </div>
+      <div class="item2">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image2.png' %}"
+            alt="image 2"
+            />
+      </div>
+      <div class="item3">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image3.png' %}"
+            alt="image 3"
+            />
+      </div>
+      <div class="item4">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image4.png' %}"
+            alt="image 4"
+            />
+      </div>
+      <div class="item5">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image5.png' %}"
+            alt="image 5"
+            />
+      </div>
+      <div class="item6">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image6.png' %}"
+            alt="image 6"
+            />
+      </div>
+      <div class="item7">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image7.png' %}"
+            alt="image 7"
+            />
+      </div>
+   </div>
+</div>
+</div>
+
+
+
+
+
+
+
+{% comment %} test {% endcomment %}
+<style>
+   /* general styles */
+   /*padded section */
+   .pad-section {
+   padding: 50px 0;
+   }
+   .pad-section img {
+   width: 100%;
+   }
+   /* vertical-centered text */
+   .text-vcenter {
+   display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+   }
+   .text-vcenter h1 {
+   font-family: Quicksand, serif;
+   font-size: 5.5em;
+   font-weight: 400;
+   margin: 0;
+   padding: 0;
+   }
+   /* seconde section - About */
+   #about .container {
+   margin-top: 50px;
+   }
+   #about .col-sm-6 img {
+   max-height: 400px;
+   object-fit: cover;
+   border-radius: 10px;
+   }
+   #about h2 {
+   font-family: Quicksand, serif;
+   font-weight: 500;
+   margin-top: 30px;
+   }
+   #about p.lead {
+   font-size: 1.2rem;
+   margin-top: 20px;
+   }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- seconde section - About -->
+<div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6">
+            <img src="{% static 'app/images/ab1.png' %}" alt="" />
+         </div>
+         <div class="col-sm-6 text-center">
+            <h2>Organic farming</h2>
+            <p class="lead">Organic farming can be defined as an agricultural process that uses biological fertilisers and pest control acquired from animal or plant waste. Organic farming was actually initiated as an answer to the environmental sufferings caused by the use of chemical pesticides and synthetic fertilisers.
+
+               The organic farming process is more eco-friendly than conventional farming. Organic farming keeps soil healthy and maintains environment integrity thereby, promoting the health of consumers.</p>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- /second section -->
+<div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6 ">
+            <h2>Organic foods</h2>
+            <p class="lead">The term “organic” refers to how certain foods are produced. Organic foods have been grown or farmed without the use of: In order to be labelled organic, a food product must be free of artificial food additives. This includes artificial sweeteners, preservatives, colouring, flavouring, and monosodium glutamate (MSG)
+
+               Our Mission To be a trustworthy and innovative global leader in providing genuine organic True Wellness products and solutions for conscious, healthy living
+               
+               Organic products are grown under a system of agriculture without the use of chemical fertilizers and pesticides with an environmentally and socially responsible approach.
+               
+               Organic Products India is an organization that specialises in manufacturing and exporting a variety of organic food products like oil seeds, spices, grains and pulses.</p>
+         </div>
+         <div class="col-sm-6">
+            <img src="{% static 'app/images/ab2.png' %}" alt="" />
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<section class="details">
+   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" fill="rgb(234,234,234)" xml:space="preserve">
+      <g>
+         <path d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+            c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
+            c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
+            C400.004,190.438,392.251,182.686,382.688,182.686z"></path>
+      </g>
+   </svg>
+   </div>
+</section>
+
+<style>
+   .containerrr {
+   height: 200px;
+   margin: auto;
+   display: grid;
+   /*display: flex;*/
+   position: relative;
+   place-items: centre;
+   overflow: hidden;
+   scroll-behaviour: smooth;
+   }
+   .slide-container {
+   display: flex;
+   gap:5px;
+   align-items: centre;
+   width: calc(250px * 18);
+   animation: scroll 50s linear infinite;
+   }
+   @keyframes scroll {
+   0% {
+   transform: translate(0);
+   }
+   100% {
+   transform: translateX(calc(-250px * 15));
+   }s 
+   }
+   .slide-image {
+   height: 150px;
+   width: 200px;
+   display: flex;
+   align-items: centre;
+   padding: 15px;
+   perspective: 100px;
+   }
+   img {
+   width: 100%;
+   height: auto;
+   cursor: pointer;
+   transition: transform 1s;
+   }
+   img:hover {
+   transform: translateZ(20px);
+   }
+</style>p
+<div class="containerrr">
+   <div class="slide-container">
+      <div class="slide-image">
+         <img src="https://www.investopedia.com/thmb/F8CKM3YkF1fmnRCU2g4knuK0eDY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MClogo-c823e495c5cf455c89ddfb0e17fc7978.jpg" alt="" />
+      </div>
+      <div class="slide-image">
+         <img src="https://d28wu8o6itv89t.cloudfront.net/images/Visadebitcardpng-1599584312349.png" alt="" />
+      </div>
+      <div class="slide-image">
+         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/RuPay.svg/2560px-RuPay.svg.png" alt="" />
+      </div>
+      <div class="slide-image">
+         <img src="https://s31898.pcdn.co/wp-content/uploads/2022/07/upi-image-2-800x430.jpg" alt="" />
+      </div>
+      <div class="slide-image">
+         <img src="https://razorpay.com/assets/best-payment-gateway/tab-netbanking.png" alt="" />
+      </div>
+   </div>
+</div>
+   
+
+
+<br/><br/><br/><br/>
+{% endblock main-content %}

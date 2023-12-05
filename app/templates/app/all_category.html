@@ -1,0 +1,81 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+{% block title %}Index{% endblock title %}
+
+
+{% block main-content %}
+<div class="container">
+   <br/><br/><br/><br/>
+   <style>
+    .product-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    }
+ </style>
+
+ 
+
+ <div class="container">
+ 
+
+  <style>
+    /* Add custom styles here to enhance the design */
+    .product-card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .product-title {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+
+    .product-price {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+   
+   <br><br><br><br>
+
+   <h2 class="text-center"> All Category</h2>
+   <div class="container mt-4">
+    <div class="row">
+      {% for product_obj in category_objects %}
+            <div class="col-md-3">
+                <div class="product-card">
+                    <a href="{% url 'all_category_filter' category_id=product_obj.id %}">
+                        <div class="product-image">
+                            <img src="{{ product_obj.image.url }}" alt="Product Image">
+                        </div>
+                        <div class="product-details">
+                            <h2 class="product-title" style="text-decoration: none !important;">{{ product_obj.name }}</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+  
+                </div>
+
+
+
+
+    
+
+  <br/><br/><br/><br/>
+{% endblock main-content %}

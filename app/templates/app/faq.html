@@ -1,0 +1,264 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}FAQ {% endblock title %}
+
+
+
+{% block main-content %}
+<br/><br/><br/><br/>
+<style>
+    .b {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        
+    }
+    
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+    
+    p {
+        margin: 0 0 5px;
+    }
+    
+    
+    /* Faq */
+    
+    .faq {
+        max-width: 500px;
+        margin: 20px auto;
+    }
+    
+    .faq-item {
+        margin-bottom: 5px;
+        border: 1px solid #b91125;
+        background-color: #000; /* Set box color to black */
+    }
+    
+    .faq-title {
+        display: block;
+        padding: 10px 15px;
+        position: relative;
+    
+        color: #fff;
+        cursor: pointer;
+    
+        transition: background .2s ease-out;
+    }
+    
+    .faq-title:after {
+        content: "";
+        display: block;
+    
+        border-style: solid;
+        border-width: 8px 5px 0 5px;
+        border-color: #fff transparent transparent transparent;
+    
+        position: absolute;
+        top: 50%;
+        right: 15px;
+    
+        transform: translateY(-50%);
+    }
+    
+    .faq-title:hover {
+        background-color: #b91125;
+    }
+    
+    .faq-input {
+        width: 0;
+        height: 0;
+    
+        -webkit-appearance: none;
+        appearance: none;
+    
+        position: absolute;
+    }
+    
+    .faq-input:checked ~ .faq-title {
+        background-color: #b91125;
+    }
+    
+    .faq-input:checked ~ .faq-title:after {
+        border-style: solid;
+        border-width: 0 5px 8px 5px;
+        border-color: transparent transparent #fff transparent;
+    }
+    
+    .faq-input:checked ~ .faq-text {
+        display: block;
+    }
+    
+    .faq-text {
+        display: none;
+        padding: 10px 15px;
+    
+        color: #fff;
+        font-size: 14px;
+    }
+    
+</style>
+<div class="b">
+    <h2 style="text-align: center;">FAQ</h2>
+
+<div class="faq">
+    <div class="faq-item">
+        <input class="faq-input" type="checkbox" id="faq_1">
+        <label class="faq-title" for="faq_1">Do you deliver goods from organic farming to every state in the union?
+        </label>
+        <div class="faq-text">
+            <p>Yes, we ship to every state in the union with our products from organic farming. We work to make our products available to farmers and gardeners statewide because we support sustainable agriculture nationwide.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <input class="faq-input" type="checkbox" id="faq_2">
+        <label class="faq-title" for="faq_2">Are the goods you sell from organic farming certified?
+        </label>
+        <div class="faq-text">
+            <p>Yes, all of our products from organic farming have received certification from reputable organizations. Because of our dedication to organic standards, our goods are devoid of synthetic chemicals and genetically modified organisms (GMOs), fostering sustainable and environmentally beneficial methods.
+            </p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <input class="faq-input" type="checkbox" id="faq_3">
+        <label class="faq-title" for="faq_3">Are there any specials or discounts offered for large purchases?
+
+        </label>
+        <div class="faq-text">
+            <p>On large orders, we frequently provide discounts and exclusive deals. To be informed about our newest promotions, keep an eye on our website or sign up for our newsletter.
+
+            </p>
+        </div>
+    </div>
+    <div class="faq-item">
+        <input class="faq-input" type="checkbox" id="faq_4">
+        <label class="faq-title" for="faq_4">How do I track my order once I've made it?
+
+        </label>
+        <div class="faq-text">
+            <p>We will give you a tracking number as soon as your order has been confirmed and sent. This number can be used to find out the current whereabouts of your shipment and to estimate when it will arrive.
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <input class="faq-input" type="checkbox" id="faq_5">
+        <label class="faq-title" for="faq_5">Do organic foods cost more money?
+
+        </label>
+        <div class="faq-text">
+            <p>In comparison to conventional farming, producing organic food might be more labour-intensive and result in marginally lower yields, which can push up costs. But prices for organic food are steadily coming down as demand for such items rises and economies of scale improve.
+
+            </p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <input class="faq-input" type="checkbox" id="faq_6">
+        <label class="faq-title" for="faq_6">Do you provide state-specific specials or discounts?
+
+
+        </label>
+        <div class="faq-text">
+            <p>Yes, from time to time we do provide state-specific discounts and promotions to meet the particular requirements of farmers in various areas. For the most recent deals, keep an eye on our website.
+
+
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<style>
+    /* general styles */
+    /*padded section */
+    .pad-section {
+    padding: 50px 0;
+    }
+    .pad-section img {
+    width: 100%;
+    }
+    /* vertical-centered text */
+    .text-vcenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    }
+    .text-vcenter h1 {
+    font-family: Quicksand, serif;
+    font-size: 5.5em;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    }
+    /* seconde section - About */
+    #about .container {
+    margin-top: 50px;
+    }
+    #about .col-sm-6 img {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    }
+    #about h2 {
+    font-family: Quicksand, serif;
+    font-weight: 500;
+    margin-top: 30px;
+    }
+    #about p.lead {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    }
+  </style>
+  
+  
+  
+  <!-- seconde section - About -->
+  <div id="about" class="pad-section">
+    <div class="container">
+       <div class="row">
+          <div class="col-sm-6">
+             <img src="{% static 'app/images/ab1.png' %}" alt="" />
+          </div>
+          <div class="col-sm-6 text-center">
+             <h2>Organic farming</h2>
+             <p class="lead">Organic farming can be defined as an agricultural process that uses biological fertilisers and pest control acquired from animal or plant waste. Organic farming was actually initiated as an answer to the environmental sufferings caused by the use of chemical pesticides and synthetic fertilisers.
+  
+                The organic farming process is more eco-friendly than conventional farming. Organic farming keeps soil healthy and maintains environment integrity thereby, promoting the health of consumers.</p>
+          </div>
+       </div>
+    </div>
+  </div>
+  <!-- /second section -->
+  <div id="about" class="pad-section">
+    <div class="container">
+       <div class="row">
+          <div class="col-sm-6 ">
+             <h2>Organic foods</h2>
+             <p class="lead">The term “organic” refers to how certain foods are produced. Organic foods have been grown or farmed without the use of: In order to be labelled organic, a food product must be free of artificial food additives. This includes artificial sweeteners, preservatives, colouring, flavouring, and monosodium glutamate (MSG)
+  
+                Our Mission To be a trustworthy and innovative global leader in providing genuine organic True Wellness products and solutions for conscious, healthy living
+                
+                Organic products are grown under a system of agriculture without the use of chemical fertilizers and pesticides with an environmentally and socially responsible approach.
+                
+                Organic Products India is an organization that specialises in manufacturing and exporting a variety of organic food products like oil seeds, spices, grains and pulses.</p>
+          </div>
+          <div class="col-sm-6">
+             <img src="{% static 'app/images/ab2.png' %}" alt="" />
+          </div>
+       </div>
+    </div>
+  </div>
+  </div>
+
+
+<br/><br/><br/><br/>
+
+{% endblock main-content %}

@@ -1,0 +1,469 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+{% block title %}Index{% endblock title %}
+{% block meta_description %}This is a page-specific meta description.{% endblock %}
+{% block meta_keywords %}specific, keywords, here{% endblock %}
+{% block meta_author %}Page Author{% endblock %}
+{% block og_title %}Page-Specific Title{% endblock %}
+{% block og_description %}This is a page-specific Open Graph description.{% endblock %}
+{% block og_image %}URL to page-specific image{% endblock %}
+{% block og_url %}{% url 'index' %}{% endblock %}
+{% block twitter_title %}Page-Specific Title{% endblock %}
+{% block twitter_description %}This is a page-specific Twitter description.{% endblock %}
+{% block twitter_image %}URL to page-specific Twitter image{% endblock %}
+{% block canonical_url %}{% url 'index' %}{% endblock %}
+{% block robots_meta %}index, follow{% endblock %}
+{% block bannner_slider %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+   <style>
+      @media (max-width: 768px){
+      .carousel-item{
+      margin-top: 10%;
+      }
+      }
+   </style>
+   {% comment %} 
+   <div class="carousel-inner">
+      <div class="carousel-item active">
+         <img src="{% static 'app/images/banner/b1.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item ">
+         <img src="{% static 'app/images/banner/b2.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item ">
+         <img src="{% static 'app/images/banner/b3.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item ">
+         <img src="{% static 'app/images/banner/b4.png' %}" class="d-block w-100" alt="...">
+      </div>
+   </div>
+   {% endcomment %}
+</div>
+{% endblock bannner_slider %}
+{% block information %}
+<style>
+   .bdo {
+   margin: 0;
+   padding: 0;
+   display: flex;
+   overflow: hidden;
+   }
+   .card-container {
+   display: flex;
+   animation: scrollCard 10s linear infinite;
+   }
+   .card {
+   width: auto;
+   height: auto;
+   background-color: #f2f2f2;
+   border: 1px solid #ddd;
+   margin: 10px;
+   padding: 20px;
+   box-sizing: border-box;
+   }
+   .card-container:hover {
+   animation-play-state: paused;
+   }
+   @keyframes scrollCard {
+   0% {
+   transform: translateX(100%);
+   }
+   100% {
+   transform: translateX(-100%);
+   }
+   }
+</style>
+{% comment %}  
+<br><br><br>
+<div class="bdo">
+   <div class="card-container">
+      {% for i in city %}
+      <a href="{% url 'product' city_name=i.city %}" style="color: black; font-weight: bold; text-decoration: none;">
+         <div class="card">
+            {{ i.city }}
+         </div>
+      </a>
+      {% endfor %} {% endcomment %}
+   </div>
+</div>
+<br><br><br><br><br>
+{% endblock information %} 
+{% block main-content %}
+<div class="container">
+   
+   <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <style>
+          @media (max-width: 768px) {
+              .carousel-item {
+                  margin-top: 10%;
+              }
+  
+              .carousel-inner img {
+                  width: 100%;
+              }
+          }
+  
+          .carousel-inner {
+              border-radius: 35px; /* You can adjust the radius value as needed */
+              overflow: hidden; /* This is important to make sure the rounded corners are visible */
+          }
+      </style>
+      <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img src="{% static 'app/images/banner1.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+              <img src="{% static 'app/images/banner2.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <!-- Add more carousel items as needed -->
+      </div>
+  </div>
+  
+  
+   <br><br><br>
+   
+   <h2 class="text-center"> All Category</h2>
+   <div class="container mt-4">
+      <div class="row">
+         {% for product_obj in category_objects|slice:"0:8" %}
+         <div class="col-md-3 col-sm-6">
+            <div class="product-card">
+               <a href="{% url 'all_category_filter' category_id=product_obj.id %}">
+                  <div class="product-image">
+                     <img src="{{ product_obj.image.url }}" alt="Product Image" class="img-fluid">
+                  </div>
+                  <div class="product-details">
+                     <h2 class="product-title">{{ product_obj.name }}</h2>
+                  </div>
+               </a>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+   <div class="row justify-content-center mt-4">
+      <div class="col-md-4 text-center">
+         <!-- Added "text-center" class to center content -->
+         <a href="{% url 'all_category' %}" class="btn btn-primary">View More Category</a>
+      </div>
+   </div>
+   <br><br><br>     
+   <br><br><br>
+   <h2 class="text-center"> All Products</h2>
+   <br/><br/><br/><br/>
+   <style>
+      .product-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+      }
+   </style>
+   <div class="container">
+      <style>
+         /* Add custom styles here to enhance the design */
+         .product-card {
+         border: 1px solid #ccc;
+         border-radius: 10px;
+         padding: 10px;
+         margin-bottom: 20px;
+         text-align: center;
+         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+         }
+         .product-image img {
+         max-width: 100%;
+         height: auto;
+         border-radius: 10px;
+         }
+         .product-title {
+         font-size: 1.2rem;
+         margin-top: 10px;
+         }
+         .product-price {
+         font-size: 1.25rem;
+         font-weight: bold;
+         margin-top: 10px;
+         }
+         a{
+         text-decoration: none;
+         }
+      </style>
+      <div class="container mt-4">
+         <div class="row">
+            {% for product_obj in product|slice:"0:8" %}
+            <div class="col-md-3">
+               <div class="product-card">
+                  <a href="{% url 'product-detail' id=product_obj.id %}">
+                     <div class="product-image">
+                        <img src="{{ product_obj.image.url }}" alt="Product Image">
+                     </div>
+                     <div class="product-details">
+                        <h2 class="product-title">{{ product_obj.name }}</h2>
+                        <h2 class="product-title">{{ product_obj.weight }}</h2>
+                        <div class="product-price">
+                           <span class="text-danger">Rs.{{ product_obj.after_discount }}/-
+                           <small class="text-decoration-line-through">{{ product_obj.price }}</small>
+                           </span>
+                        </div>
+                     </div>
+                  </a>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   <div class="row justify-content-center mt-4">
+      <div class="col-md-4 text-center">
+         <!-- Added "text-center" class to center content -->
+         <a href="{% url 'all_product' %}" class="btn btn-primary">View More Products</a>
+      </div>
+   </div>
+   <br><br><br>
+   <style>
+      .grid-image {
+      border-radius: 10px;
+      transition: 0.2s ease-in-out;
+      width: 100%;
+      height: 100%;
+      }
+      .grid-image:hover {
+      transform: scale(1.05);
+      transition: 0.2s ease-in-out;
+      }
+      .grid {
+      display: grid;
+      gap: 10px;
+      grid-template-areas:
+      "I1 I1 I2 I3"
+      "I1 I1 I2 I7"
+      "I4 I5 I6 I7";
+      }
+      .item1 {
+      grid-area: I1;
+      }
+      .item2 {
+      grid-area: I2;
+      }
+      .item3 {
+      grid-area: I3;
+      }
+      .item4 {
+      grid-area: I4;
+      }
+      .item5 {
+      grid-area: I5;
+      }
+      .item6 {
+      grid-area: I6;
+      }
+      .item7 {
+      grid-area: I7;
+      }
+   </style>
+   <div class="grid">
+      <div class="item1">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image1.png' %}"
+            alt="image 1"
+            />
+      </div>
+      <div class="item2">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image2.png' %}"
+            alt="image 2"
+            />
+      </div>
+      <div class="item3">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image3.png' %}"
+            alt="image 3"
+            />
+      </div>
+      <div class="item4">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image4.png' %}"
+            alt="image 4"
+            />
+      </div>
+      <div class="item5">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image5.png' %}"
+            alt="image 5"
+            />
+      </div>
+      <div class="item6">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image6.png' %}"
+            alt="image 6"
+            />
+      </div>
+      <div class="item7">
+         <img
+            class="grid-image"
+            src="{% static 'app/images/grid_image7.png' %}"
+            alt="image 7"
+            />
+      </div>
+   </div>
+</div>
+</div>
+{% comment %} test {% endcomment %}
+<style>
+   /* general styles */
+   /*padded section */
+   .pad-section {
+   padding: 50px 0;
+   }
+   .pad-section img {
+   width: 100%;
+   }
+   /* vertical-centered text */
+   .text-vcenter {
+   display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+   }
+   .text-vcenter h1 {
+   font-family: Quicksand, serif;
+   font-size: 5.5em;
+   font-weight: 400;
+   margin: 0;
+   padding: 0;
+   }
+   /* seconde section - About */
+   #about .container {
+   margin-top: 50px;
+   }
+   #about .col-sm-6 img {
+   max-height: 400px;
+   object-fit: cover;
+   border-radius: 10px;
+   }
+   #about h2 {
+   font-family: Quicksand, serif;
+   font-weight: 500;
+   margin-top: 30px;
+   }
+   #about p.lead {
+   font-size: 1.2rem;
+   margin-top: 20px;
+   }
+</style>
+<!-- seconde section - About -->
+<div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6">
+            {% comment %} <img src="{% static 'app/images/ab1.png' %}" alt="" /> {% endcomment %}
+         </div>
+         <div class="col-sm-6 text-center">
+            <h2>Free Delivery!</h2>
+            <p class="lead">At FarmsCraft, we believe that delivery should be hassle-free, affordable and convenient. Hence, we have made it our mission to offer the same to our valued customers. On each order, we are currently offering free delivery! So hurry and place an order!</p>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- /second section -->
+<div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6 ">
+            <h2>Innovation. Nostalgia. Newness. </h2>
+            <p class="lead">To blend the art of cultivation with a touch of innovation, bringing you a taste that's both nostalgic and new. Join us on a journey celebrating nature's finest offerings. Our selection of fresh farm products represents wholesomeness. Celebrate the timeless artistry of agriculture with us through every delightful bite.</p>
+         </div>
+         <div class="col-sm-6">
+            {% comment %} <img src="{% static 'app/images/ab2.png' %}" alt="" /> {% endcomment %}
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<section class="details">
+   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 400.004 400.004" style="enable-background:new 0 0 400.004 400.004;" fill="rgb(234,234,234)" xml:space="preserve">
+      <g>
+         <path d="M382.688,182.686H59.116l77.209-77.214c6.764-6.76,6.764-17.726,0-24.485c-6.764-6.764-17.73-6.764-24.484,0L5.073,187.757
+            c-6.764,6.76-6.764,17.727,0,24.485l106.768,106.775c3.381,3.383,7.812,5.072,12.242,5.072c4.43,0,8.861-1.689,12.242-5.072
+            c6.764-6.76,6.764-17.726,0-24.484l-77.209-77.218h323.572c9.562,0,17.316-7.753,17.316-17.315
+            C400.004,190.438,392.251,182.686,382.688,182.686z"></path>
+      </g>
+   </svg>
+   </div>
+</section>
+<style>
+   #bod {
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #f4f4f4;
+   }
+   #videoPopup {
+   display: flex;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.7);
+   z-index: 1;
+   align-items: center;
+   justify-content: center;
+   }
+   #videoContainer {
+   position: relative;
+   max-width: 80%; /* Adjust the maximum width as needed */
+   }
+   #closeBtn {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   cursor: pointer;
+   color: #fff;
+   font-size: 30px; /* Adjust the font size as needed */
+   }
+   #videoIframe {
+   width: 70vh; /* Adjust the width as needed */
+   max-width: 100%;
+   height: 40vh; /* Adjust the height as needed */
+   }
+</style>
+<div id="bod">
+   <!-- Video Popup -->
+   <div id="videoPopup">
+      <div id="videoContainer">
+         <span id="closeBtn" onclick="closeVideoPopup()">&times;</span>
+         <!-- Embed your video here -->
+         <iframe id="videoIframe" src="https://www.youtube.com/embed/yUDPvqmr5X8?autoplay=1&mute=1&showinfo=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+      </div>
+   </div>
+   <script>
+      var videoPopup = document.getElementById("videoPopup");
+      var videoIframe = document.getElementById("videoIframe");
+      
+      // Call openVideoPopup directly when the page loads
+      openVideoPopup();
+      
+      function openVideoPopup() {
+          videoPopup.style.display = "flex";
+          // Play the video by triggering play() on the iframe
+          videoIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+      
+      function closeVideoPopup() {
+          videoPopup.style.display = "none";
+          // Pause the video by triggering pause() on the iframe
+          videoIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      }
+   </script>
+</div>
+{% comment %} popup end {% endcomment %}
+<br/><br/><br/><br/>
+{% endblock main-content %}

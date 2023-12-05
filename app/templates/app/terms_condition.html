@@ -1,0 +1,90 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}FAQ {% endblock title %}
+
+
+
+{% block main-content %}
+
+<br/><br/><br/><br/>
+
+<style>
+    .b {
+        background: linear-gradient(#ccc, #fff);
+        font: 14px sans-serif;
+        padding: 20px;
+      }
+      .letter {
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        margin: 26px auto 0;
+        max-width: 550px;
+        min-height: 300px;
+        padding: 24px;
+        position: relative;
+        width: 80%;
+      }
+      .letter:before, .letter:after {
+        content: "";
+        height: 98%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+      }
+      .letter:before {
+        background: #fafafa;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        left: -5px;
+        top: 4px;
+        transform: rotate(-2.5deg);
+      }
+      .letter:after {
+        background: #f6f6f6;
+        box-shadow: 0 0 3px rgba(0,0,0,0.2);
+        right: -3px;
+        top: 1px;
+        transform: rotate(1.4deg);
+      }
+</style>
+<div class="d">
+<div class="letter">
+    <p>TERMS AND CONDITIONS ,</p>
+    <p>1) Product descriptions: The products that the website sells and that come from organic farming must be accurately and completely described. This contains information on the contents, instructions for use, and any unique certifications or requirements the products must meet.
+    </p>
+    <p>2) Ordering and Payment: The terms should outline the ordering process, acceptable payment methods, and any applicable taxes or other fees.
+    </p>
+    <p>3) Information regarding shipment and delivery, such as shipping options, anticipated arrival times, and associated fees, should be included. It could also include the regions or countries where they offer delivery services.</p>
+    <p>4) Returns and Refunds: Depending on the circumstances, a customer may be eligible for a return or refund if they receive a product that doesn't live up to their expectations or was harmed during shipping.
+    </p>
+  
+    <p>5) A privacy statement describing how a website will collect, use, and protect user data should be present.
+    </p>
+
+    <p>6) Security: The terms should outline the security measures the website has put in place to protect customer data and credit card information.
+    </p>
+
+    <p>7) The text, images, and logos on the website should all be made clear that they are protected by intellectual property rights and cannot be used without authorization.
+    </p>
+
+    <p>8) The conditions may contain provisions for conflict resolution, such as arbitration or mediation.
+    </p>
+
+    <p>9) Limitation of liability: In general, this section limits the website's liability for losses resulting from the use of its products or services.
+    </p>
+    <p>10) Compliance with Laws: Per the terms and conditions, users are responsible for abiding by local laws and ordinances governing organic farming and the use of products in their communities.
+
+    </p>
+    <p>11) The website reserves the right to modify the terms at any time while giving customers prior notice.
+
+    </p>
+    <p>12) Termination: The terms may outline the circumstances in which a user's access to the website's services or their account may be terminated.
+
+
+    </p>
+  </div>
+</div>
+
+<br/><br/><br/><br/>
+
+{% endblock main-content %}

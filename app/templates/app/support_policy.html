@@ -1,0 +1,74 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}T&C {% endblock title %}
+
+
+
+{% block main-content %}
+
+<br/><br/><br/><br/>
+
+<style>
+    .b {
+        background: linear-gradient(#ccc, #fff);
+        font: 14px sans-serif;
+        padding: 20px;
+      }
+      .letter {
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        margin: 26px auto 0;
+        max-width: 550px;
+        min-height: 300px;
+        padding: 24px;
+        position: relative;
+        width: 80%;
+      }
+      .letter:before, .letter:after {
+        content: "";
+        height: 98%;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+      }
+      .letter:before {
+        background: #fafafa;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        left: -5px;
+        top: 4px;
+        transform: rotate(-2.5deg);
+      }
+      .letter:after {
+        background: #f6f6f6;
+        box-shadow: 0 0 3px rgba(0,0,0,0.2);
+        right: -3px;
+        top: 1px;
+        transform: rotate(1.4deg);
+      }
+</style>
+<div class="d">
+<div class="letter">
+    <h2>Support Policy</h2>
+
+    <p><strong>Introduction: </strong>Our motto of keeping our customers satisfied has pushed us to facilitate a vivid support policy. We have established a detailed support policy to ensure optimum customer satisfaction and to guide our customers with any product information, communication modes, shopping facilitation and returns and refunds.</p>
+
+    <p><strong>Communication Channels:</strong> We are available over WhatsApp 24*7. Find our contact details regarding the same, at the right end of the page, showcasing a WhatsApp icon. DM us for any inquiries and information. Our contact number has further been provided at the top of the home page. Call us to directly order any product of your choice! Order can also be placed directly from the website, at your convenience. We are also available over email, the ID of which can be found in our privacy policy segment. We aim to respond to your message as soon as possible. </p>
+
+    <p><strong>Queries and Product Information:</strong> Our website provides a comprehensive overview of all our products, within the long description segment. All the necessary product information can be availed from there. Before reaching out to our support team, please check the FAQ section, which can be found at the bottom of the website, to find answers to the most commonly asked questions. If you require further clarification, then directly contact our support team, either over WhatsApp or email us. We are always available to resolve your queries. </p>
+
+    <p><strong>Dispute Resolution:</strong> To report any issues associated with product damages and defects, or any other associated complaints, contact us through either of the communication channels, mentioned above. Even your negative feedback will be important to us. Our support team will judiciously investigate the complaint and will provide a solution as soon as possible.</p>
+
+    <p><strong>Shopping Assistance:</strong> We have categorized all our products vividly for your feasibility. Moreover, the comprehensive product descriptions will further enable you to make a well-informed decision, while buying the same. For further guidance, you can always contact our support team directly via WhatsApp.</p>
+
+    <p><strong>Refunds and Returns:</strong> Returns and refunds will only be applicable on certain product items, subject to the discretion of the sourcing manager. In cases of refunds and returns, contact our support team to know more in detail, or for the applicability of the same.</p>
+
+    
+   
+    
+  </div>
+</div>
+
+<br/><br/><br/><br/>
+
+{% endblock main-content %}

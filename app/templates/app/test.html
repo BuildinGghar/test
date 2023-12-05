@@ -1,0 +1,31 @@
+<!-- myapp/templates/myapp/api_data.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Data</title>
+</head>
+<body>
+    <h1>API Data</h1>
+   
+    <ul>
+      
+        {% for entry in data%}
+            <p>Name - {{ entry.name }}</p>
+            <p>Domains - {{ entry.domains }}</p>
+            <p>state-province - {{ entry.state_province }}</p>
+            
+            <br><br>
+            <!-- Add more fields as needed -->
+        {% endfor %}
+
+
+      
+
+
+    </ul>
+</body>
+</html>
+
+
+
+count

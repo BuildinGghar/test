@@ -1,0 +1,165 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}About{% endblock title %}
+
+
+
+
+
+{% block main-content %}
+
+
+
+{% comment %} test {% endcomment %}
+<style>
+  /* general styles */
+  /*padded section */
+  .pad-section {
+  padding: 50px 0;
+  }
+  .pad-section img {
+  width: 100%;
+  }
+  /* vertical-centered text */
+  .text-vcenter {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  }
+  .text-vcenter h1 {
+  font-family: Quicksand, serif;
+  font-size: 5.5em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  }
+  /* seconde section - About */
+  #about .container {
+  margin-top: 50px;
+  }
+  #about .col-sm-6 img {
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  }
+  #about h2 {
+  font-family: Quicksand, serif;
+  font-weight: 500;
+  margin-top: 30px;
+  }
+  #about p.lead {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- seconde section - About -->
+<div id="about" class="pad-section">
+  <div class="container">
+     <div class="row">
+        <div class="col-sm-6">
+           <img src="{% static 'app/images/ab1.png' %}" alt="" />
+        </div>
+        <div class="col-sm-6 text-center">
+           <h2>We Focus on Quality and Freshness!</h2>
+           <p class="lead">At FarmsCraft, we believe that quality maintenance is the key to customer satisfaction, especially when it comes to food choices. That’s why we have optimized the segment of quality assurance. We further believe that food quality can only be maintained by leveraging its freshness quotient. We source our food very carefully, through connecting with the local suppliers to ensure product authenticity. Our operational team facilitates a rigorous selection process to ensure the selection of the finest food ingredients. Before finalizing the products, we ensure that the food ingredients are at the peak of their freshness. We have further optimized our inventory management processes.</p>
+        </div>
+     </div>
+  </div>
+</div>
+<!-- /second section -->
+<div id="about" class="pad-section">
+  <div class="container">
+     <div class="row">
+        <div class="col-sm-6 ">
+           <h2>Your One-Step Solution for All Natural Food Products. </h2>
+           <p class="lead">FarmsCraft is dedicated to providing its customers with a varied range of ‘all natural’ food choices. We understand the importance of choice and preference. Hence, we offer a wide range of categories which cater to varied lifestyle and dietary preferences. Our main categories include: Dry Fruits, Spices, Oil, Dal, Rice, Turmeric and Flour. Within these categories, we have further kept a wide range of products, both regular and rare, to amplify the options for the customers. You just need to place an order, to get any culinary ingredient you want!
+         </p>
+        </div>
+        <div class="col-sm-6">
+           <img src="{% static 'app/images/ab2.png' %}" alt="" />
+        </div>
+     </div>
+  </div>
+</div>
+</div>
+
+
+<!-- seconde section - About -->
+<div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6">
+            <img src="{% static 'app/images/ab3.png' %}" alt="" />
+         </div>
+         <div class="col-sm-6 text-center">
+            <h2>FarmsCraft Blends Exoticity with Accessibility.</h2>
+            <p class="lead">We believe that FarmsCraft stands out because we have made the availability of exotic food items like Gulkand, Kiwi, Rajapuri Finger, Nizam Ghatta, deseeded dates, etc. look feasible. To be precise, we offer an eccentric range of exotic products, which are not readily available online. We aim to elevate the culinary experiences of our customers, by enabling them to experiment with new and wild flavors (e.g., Cashew Nut R Chilli). Our products further can be availed by customers living in any part of India, just by using our website, which has been developed in a user-friendly manner.</p>
+         </div>
+      </div>
+   </div>
+ </div>
+ <!-- /second section -->
+ <div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6 ">
+            <h2>Optimal Procurement Strategy for Indian Spices!</h2>
+            <p class="lead">The operational team of FarmsCraft have strategically facilitated the phenomenon of direct sourcing to maintain the taste, flavor and authenticity of Indian spices! We have been procuring our spices through careful consideration to maintain their zest and flavor. For example, Curcuma Fingers has been authentically procured from Nizam Ghatta. Similarly, we have maintained a strategic distinctiveness to separate the varied products belonging to a single category. Most importantly, we practice periodic inventory turnover to ensure the optimization of shelf life facilitation, guaranteeing the flavor required to enhance Indian dishes. The process of continuous monitoring has further helped us to ensure the streamlining of procurement processes.
+          </p>
+         </div>
+         <div class="col-sm-6">
+            <img src="{% static 'app/images/ab4.png' %}" alt="" />
+         </div>
+      </div>
+   </div>
+ </div>
+ </div>
+
+
+ <!-- seconde section - About -->
+<div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6">
+            <img src="{% static 'app/images/ab5.png' %}" alt="" />
+         </div>
+         <div class="col-sm-6 text-center">
+            <h2>We are Concerned about your Health and Wellness.</h2>
+            <p class="lead">We are judiciously concerned about the health and wellness of our customers. We believe that customer satisfaction is heavily dependent on the health benefits governing the foods and culinary ingredients they intake. As a result of which, we have selected our products, based on them having optimal health benefits. For example, the category of dried fruits is dominantly rich in essential nutrients like vitamins and minerals. Products like Gulkand and Erode Turmeric Finger come with ayurvedic benefits. Similarly, products like sunflower oil and ginger paste have their unique set of medicinal benefits. We have conducted detailed R&D for the same!</p>
+         </div>
+      </div>
+   </div>
+ </div>
+ <!-- /second section -->
+ <div id="about" class="pad-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-6 ">
+            <h2>We Prioritize Speedy Delivery! 
+            </h2>
+            <p class="lead">As instigated earlier, at FarmsCraft we have prioritized customer satisfaction as our key motto. Speedy product delivery plays a significant role in this segment as well. Our logistics team has devoted itself to ensuring that all customer orders reach them in the shortest period, without any compromise on the quality. We have further facilitated the phenomenon of real-time tracking, by leveraging technology to monitor the order progresses. We further plan to continuously improve our delivery processes.
+          </p>
+         </div>
+         <div class="col-sm-6">
+            <img src="{% static 'app/images/ab6.png' %}" alt="" />
+         </div>
+      </div>
+   </div>
+ </div>
+ </div>
+
+
+{% endblock main-content %}

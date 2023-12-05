@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %} 
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+
+{% block main-content %}
+<br/><br/><br/><br/>
+<style>
+    .offset-3{
+        margin-left: 0%;
+    }
+
+    @media (min-width: 576px){
+    .col-sm-6 {
+    flex: 0 0 auto;
+    width: 65%;
+    margin-left: 20%;
+}
+    }
+</style>
+&nbsp;&nbsp;&nbsp;
+    <div class="container">
+        <div class="row my-3">
+            <div class="col-sm-6 offset-3">
+                <h3>Login</h3>
+                <hr>
+                <form action="" method="post" novalidate class="shadow p-5">
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.error|striptags}}</small>
+                        <br>
+                    {% endfor %}
+                    <small>Existing User ? <a href="/password-reset" class="text-danger"> Forgot Password </a></small>
+                    <br>
+                    <input type="submit" value="Login" class="btn btn-primary mt-4">
+                    <div class="text-center text-primary fe-bold">
+                        <small>New User ? <a href="/customer_registration" class="text-danger"> Create an Account</a></small>
+                    </div>
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p class="alert alert-danger my-3">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock main-content %}
